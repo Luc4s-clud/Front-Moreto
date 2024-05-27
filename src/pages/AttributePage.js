@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCharacter } from '../context/CharacterContext';
 import AttributeSelection from '../components/AttributeSelection';
+import '../styles/attributePage.css';
 
 const AttributePage = () => {
   const { character, setCharacter } = useCharacter();

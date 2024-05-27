@@ -1,0 +1,24 @@
+.character-sheet {
+    text-align: left;
+    margin-top: 20px;
+  }
+  
+  .character-info, .attributes, .hp, .proficiencies, .equipment {
+    margin-bottom: 15px;
+  }
+  
+  .attribute {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  li {
+    margin-bottom: 5px;
+  }
+  
