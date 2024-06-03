@@ -1,0 +1,22 @@
+.selection-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.race-class-option {
+    border: 1px solid #ddd;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.race-class-option.pressed {
+    background-color: #ccc;
+    box-shadow: inset 0 0 5px #000;
+}
+
+.race-class-image {
+    width: 50px;
+    height: 50px;
+}

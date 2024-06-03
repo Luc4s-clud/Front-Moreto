@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import humanImage from '../assets/human.png';
 import elfImage from '../assets/elf.png';
 import dwarfImage from '../assets/dwarf.png';
@@ -16,8 +16,12 @@ import paladinImage from '../assets/paladin.png';
 import rangerImage from '../assets/ranger.png';
 import sorcererImage from '../assets/sorcerer.png';
 import warlockImage from '../assets/warlock.png';
+import '../styles/Button.css'; // Adicione este arquivo para estilização
 
-const RaceClassSelection = ({ onSelectRace, onSelectClass }) => {
+const RaceClassSelection = ({ onSelectRace, onSelectClass, onComplete }) => {
+  const [selectedRace, setSelectedRace] = useState(null);
+  const [selectedClass, setSelectedClass] = useState(null);
+
   const races = [
     { name: "Humano", description: "Versáteis e adaptáveis", image: humanImage },
     { name: "Elfo", description: "Graciosos e longevos", image: elfImage },
@@ -41,12 +45,37 @@ const RaceClassSelection = ({ onSelectRace, onSelectClass }) => {
     { name: "Bruxo", description: "Conjurador de pactos", image: warlockImage },
   ];
 
+  const handleRaceClick = (raceName) => {
+    setSelectedRace(raceName);
+  };
+
+  const handleClassClick = (className) => {
+    setSelectedClass(className);
+  };
+
+  const handleComplete = () => {
+    if (selectedRace && selectedClass) {
+      onSelectRace(selectedRace);
+      onSelectClass(selectedClass);
+      if (onComplete) {
+        onComplete();
+      }
+    } else {
+      alert('Por favor, selecione uma raça e uma classe.');
+    }
+  };
+
   return (
     <div>
+
       <h2>Escolha a Raça</h2>
       <div className="selection-container">
         {races.map((race) => (
-          <div key={race.name} className="race-class-option" onClick={() => onSelectRace(race.name)}>
+          <div
+            key={race.name}
+            className={`race-class-option ${selectedRace === race.name ? 'pressed' : ''}`}
+            onClick={() => handleRaceClick(race.name)}
+          >
             <img src={race.image} alt={race.name} className="race-class-image" />
             <div>
               <h3>{race.name}</h3>
@@ -58,7 +87,11 @@ const RaceClassSelection = ({ onSelectRace, onSelectClass }) => {
       <h2>Escolha a Classe</h2>
       <div className="selection-container">
         {classes.map((classe) => (
-          <div key={classe.name} className="race-class-option" onClick={() => onSelectClass(classe.name)}>
+          <div
+            key={classe.name}
+            className={`race-class-option ${selectedClass === classe.name ? 'pressed' : ''}`}
+            onClick={() => handleClassClick(classe.name)}
+          >
             <img src={classe.image} alt={classe.name} className="race-class-image" />
             <div>
               <h3>{classe.name}</h3>
@@ -67,6 +100,7 @@ const RaceClassSelection = ({ onSelectRace, onSelectClass }) => {
           </div>
         ))}
       </div>
+      <button onClick={handleComplete}>Concluir</button>
     </div>
   );
 };
