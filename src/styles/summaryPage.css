@@ -1,3 +1,14 @@
+.container-sumary {
+  background-color: #34495e;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  max-width: 1200px;
+  width: 90%;
+  text-align: center;
+  margin-top: 90px;
+}
+
 .character-sheet {
     text-align: left;
     margin-top: 20px;

@@ -14,7 +14,7 @@ const AttributePage = () => {
   };
 
   return (
-    <div className="container">
+    <div className="containerr">
       <h1>Criação de Personagem - Atributos</h1>
       <AttributeSelection onComplete={handleAttributesComplete} />
     </div>

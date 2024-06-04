@@ -26,7 +26,7 @@ const RaceClassPage = () => {
       return;
     }
     // Adicione qualquer lógica adicional necessária antes de navegar
-    navigate('/attributes');
+    
   };
 
   return (

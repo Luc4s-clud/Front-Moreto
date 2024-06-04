@@ -7,7 +7,7 @@ const SummaryPage = () => {
   const { character } = useCharacter();
 
   return (
-    <div className="container">
+    <div className="container-sumary">
       <h1>Resumo do Personagem</h1>
       <CharacterSheet character={character} />
     </div>
