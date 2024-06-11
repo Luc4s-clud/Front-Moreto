@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShieldAlt } from '@fortawesome/free-solid-svg-icons';
+import '../styles/AttributeSelection.css'; // Import the CSS file
 
 const AttributeSelection = ({ onComplete }) => {
   const [attributes, setAttributes] = useState({
@@ -15,7 +18,7 @@ const AttributeSelection = ({ onComplete }) => {
   };
 
   return (
-    <div>
+    <div className="attribute-selection-container">
       <h2>Atributos</h2>
       <div className="attributes-container">
         {Object.keys(attributes).map((attr) => (
@@ -32,6 +35,10 @@ const AttributeSelection = ({ onComplete }) => {
         ))}
       </div>
       <button onClick={() => onComplete(attributes)}>Concluir</button>
+      <div className="shield-icon-container">
+        <FontAwesomeIcon icon={faShieldAlt} className="shield-icon" />
+        <span className="shield-text">Texto</span>
+      </div>
     </div>
   );
 };
