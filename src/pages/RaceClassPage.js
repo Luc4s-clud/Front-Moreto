@@ -5,6 +5,8 @@ import '../styles/raceClassPage.css';
 
 const RaceClassPage = () => {
   const [characterName, setCharacterName] = useState('');
+  const [selectedRace, setSelectedRace] = useState(null);
+  const [selectedClass, setSelectedClass] = useState(null);
   const navigate = useNavigate();
 
   const handleNameChange = (event) => {
@@ -13,11 +15,12 @@ const RaceClassPage = () => {
 
   const handleRaceSelect = (selectedRace) => {
     console.log(`Raça selecionada: ${selectedRace}`);
+    setSelectedRace(selectedRace);
   };
 
   const handleClassSelect = (selectedClass) => {
     console.log(`Classe selecionada: ${selectedClass}`);
-    navigate('/attributes');
+    setSelectedClass(selectedClass);
   };
 
   const handleComplete = () => {
@@ -25,17 +28,26 @@ const RaceClassPage = () => {
       alert('Por favor, insira um nome para o personagem.');
       return;
     }
-    // Adicione qualquer lógica adicional necessária antes de navegar
-    
+
+    if (!selectedRace) {
+      alert('Por favor, selecione uma raça.');
+      return;
+    }
+
+    if (!selectedClass) {
+      alert('Por favor, selecione uma classe.');
+      return;
+    }
+
+    // Se todas as condições forem satisfeitas, navegue para a próxima página
+    navigate('/attributes');
   };
 
   return (
     <div className="container">
       <h1>Criação de Personagem - Escolha Raça e Classe</h1>
       <div className="input-container">
-        <label htmlFor="characterName">Nome do Personagem:
-        <div></div>
-        </label>
+        <label htmlFor="characterName">Nome do Personagem:</label>
         <input
           type="text"
           id="characterName"
@@ -48,6 +60,7 @@ const RaceClassPage = () => {
         onSelectClass={handleClassSelect} 
         onComplete={handleComplete} 
       />
+      <button onClick={handleComplete}>Concluir</button>
     </div>
   );
 };
