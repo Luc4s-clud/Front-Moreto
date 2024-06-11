@@ -18,8 +18,7 @@ import sorcererImage from '../assets/sorcerer.png';
 import warlockImage from '../assets/warlock.png';
 import '../styles/Button.css'; // Adicione este arquivo para estilização
 
-
-const RaceClassSelection = ({ onSelectRace, onSelectClass, onComplete }) => {
+const RaceClassSelection = ({ onSelectRace, onSelectClass }) => {
   const [selectedRace, setSelectedRace] = useState(null);
   const [selectedClass, setSelectedClass] = useState(null);
 
@@ -48,27 +47,16 @@ const RaceClassSelection = ({ onSelectRace, onSelectClass, onComplete }) => {
 
   const handleRaceClick = (raceName) => {
     setSelectedRace(raceName);
+    onSelectRace(raceName);
   };
 
   const handleClassClick = (className) => {
     setSelectedClass(className);
-  };
-
-  const handleComplete = () => {
-    if (selectedRace && selectedClass) {
-      onSelectRace(selectedRace);
-      onSelectClass(selectedClass);
-      if (onComplete) {
-        onComplete();
-      }
-    } else {
-      alert('Por favor, selecione uma raça e uma classe.');
-    }
+    onSelectClass(className);
   };
 
   return (
     <div>
-
       <h2>Escolha a Raça</h2>
       <div className="selection-container">
         {races.map((race) => (
@@ -101,7 +89,6 @@ const RaceClassSelection = ({ onSelectRace, onSelectClass, onComplete }) => {
           </div>
         ))}
       </div>
-      <button onClick={handleComplete}>Concluir</button>
     </div>
   );
 };
