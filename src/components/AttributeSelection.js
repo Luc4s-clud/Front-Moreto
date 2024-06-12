@@ -1,86 +1,101 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import axios from 'axios';
+import StatsDisplay from './StatsDisplay'; // Importa o novo componente
+import '../styles/StatsDisplay.css'; // Importa os estilos
 
 const AttributeSelection = ({ onComplete }) => {
-  const initialAttributes = {
+  const initialAttributes = useMemo(() => ({
     força: 0,
     destreza: 0,
     constituição: 0,
     inteligência: 0,
     sabedoria: 0,
     carisma: 0
-  };
+  }), []);
 
-  const [attributes, setAttributes] = useState(initialAttributes);
-
-  const attributeMapping = {
+  const attributeMapping = useMemo(() => ({
     strength: 'força',
     dexterity: 'destreza',
     constitution: 'constituição',
     intelligence: 'inteligência',
     wisdom: 'sabedoria',
     charisma: 'carisma'
-  };
+  }), []);
+
+  const [attributes, setAttributes] = useState(initialAttributes);
 
   useEffect(() => {
     const fetchAttributes = async () => {
-      const response = await axios.get('http://localhost:3333/attributes/1');
-      console.log('Response data:', response.data);
-  
-      const mappedData = { ...initialAttributes };
-      for (const key in response.data[0]) { 
-        if (key in attributeMapping) {
-          mappedData[attributeMapping[key]] = response.data[0][key] || 0;
+      try {
+        console.log('Fetching attributes...');
+        const response = await axios.get('http://localhost:3333/attributes/1');
+        console.log('Response data:', response.data);
+
+        const mappedData = { ...initialAttributes };
+        for (const key in response.data[0]) {
+          if (key in attributeMapping) {
+            mappedData[attributeMapping[key]] = response.data[0][key] || 0;
+          }
         }
+        console.log('Mapped data:', mappedData);
+
+        setAttributes(mappedData);
+      } catch (error) {
+        console.error('Error fetching attributes:', error);
       }
-      console.log('Mapped data:', mappedData);
-  
-      setAttributes(mappedData);
     };
-  
+
     fetchAttributes();
-  }, []);
+  }, [attributeMapping, initialAttributes]);
 
   const handleChange = (attr, value) => {
     setAttributes({ ...attributes, [attr]: value });
   };
 
-  const reverseAttributeMapping = {};
-for (const key in attributeMapping) {
-  reverseAttributeMapping[attributeMapping[key]] = key;
-}
+  const reverseAttributeMapping = useMemo(() => {
+    const mapping = {};
+    for (const key in attributeMapping) {
+      mapping[attributeMapping[key]] = key;
+    }
+    return mapping;
+  }, [attributeMapping]);
 
-const handleBlur = async (attr) => {
-  // Log the data that is being sent in the PUT request
-  console.log('Updating attribute:', attr, 'with value:', attributes[attr]);
-
-  // Update the data on the server when the input loses focus
-  await axios.put(`http://localhost:3333/attributes/1`, {
-    [reverseAttributeMapping[attr]]: attributes[attr]
-  });
-};
+  const handleBlur = async (attr) => {
+    console.log('Updating attribute:', attr, 'with value:', attributes[attr]);
+    try {
+      await axios.put(`http://localhost:3333/attributes/1`, {
+        [reverseAttributeMapping[attr]]: attributes[attr]
+      });
+    } catch (error) {
+      console.error('Error updating attribute:', error);
+    }
+  };
 
   return (
-    <div>
-      <h2>Atributos</h2>
-      <div className="attributes-container">
-        {Object.keys(attributes).map((attr) => (
-          <div key={attr} className="attribute-input">
-            <label>{attr.charAt(0).toUpperCase() + attr.slice(1)}</label>
-            <input
-              type="number"
-              value={attributes[attr]}
-              min="1"
-              max="20"
-              onChange={(e) => handleChange(attr, parseInt(e.target.value, 10))}
-              onBlur={() => handleBlur(attr)} // Add the onBlur event handler
-            />
-          </div>
-        ))}
+    <div className="attribute-selection">
+      <h2>Criação de Personagem - Atributos</h2>
+      <StatsDisplay armorClass={19} initiative={''} speed={'7,5'} /> {/* Adiciona o componente StatsDisplay abaixo do título */}
+      <div>
+        <h3>Atributos</h3>
+        <div className="attributes-container">
+          {Object.keys(attributes).map((attr) => (
+            <div key={attr} className="attribute-input">
+              <label>{attr.charAt(0).toUpperCase() + attr.slice(1)}</label>
+              <input
+                type="number"
+                value={attributes[attr]}
+                min="1"
+                max="20"
+                onChange={(e) => handleChange(attr, parseInt(e.target.value, 10))}
+                onBlur={() => handleBlur(attr)}
+              />
+            </div>
+          ))}
+        </div>
+        <button onClick={() => onComplete(attributes)}>Concluir</button>
       </div>
-      <button onClick={() => onComplete(attributes)}>Concluir</button>
     </div>
   );
 };
 
-export default AttributeSelection; // Move this line outside of the function
+export default AttributeSelection;

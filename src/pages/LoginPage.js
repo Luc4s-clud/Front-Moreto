@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from "../axiosConfig"
 import UserContext from '../utils/user';
+import '../styles/login.css';
 
 const Demo = () => {
   const [login, setLogin] = useState({ username: '', password: '' });
@@ -56,7 +57,7 @@ const Demo = () => {
     <UserContext.Provider value={userInfo}>
       <div style={{ height: 380 }}>
         <form onSubmit={handleSubmit}>
-          <div>
+          <div container>
             <label>Usuário:</label>
             <input
               type="text"
