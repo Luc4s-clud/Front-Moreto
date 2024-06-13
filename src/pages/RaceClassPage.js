@@ -24,10 +24,10 @@ const RaceClassPage = () => {
   };
 
   const handleComplete = () => {
-    if (characterName.trim() === '') {
-      alert('Por favor, insira um nome para o personagem.');
-      return;
-    }
+    // if (characterName.trim() === '') {
+    //   alert('Por favor, insira um nome para o personagem.');
+    //   return;
+    // }
 
     if (!selectedRace) {
       alert('Por favor, selecione uma raça.');
@@ -47,20 +47,12 @@ const RaceClassPage = () => {
     <div className="container">
       <h1>Criação de Personagem - Escolha Raça e Classe</h1>
       <div className="input-container">
-        <label htmlFor="characterName">Nome do Personagem:</label>
-        <input
-          type="text"
-          id="characterName"
-          value={characterName}
-          onChange={handleNameChange}
-        />
       </div>
-      <RaceClassSelection 
-        onSelectRace={handleRaceSelect} 
-        onSelectClass={handleClassSelect} 
-        onComplete={handleComplete} 
+      <RaceClassSelection
+        onSelectRace={handleRaceSelect}
+        onSelectClass={handleClassSelect}
+        onComplete={handleComplete}
       />
-      <button onClick={handleComplete}>Concluir</button>
     </div>
   );
 };

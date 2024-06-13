@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from "../axiosConfig"
-import UserContext from '../utils/user';
 import '../styles/login.css';
+
 
 const Demo = () => {
   const [login, setLogin] = useState({ username: '', password: '' });
@@ -21,7 +21,7 @@ const Demo = () => {
       if (response.data.type === 'success') {
         if (response.data && response.data.token) {
           localStorage.setItem('access_token', response.data.token);
-          console.log(localStorage.getItem('access_token'));
+          // console.log(localStorage.getItem('access_token'));
           setMessage('Você está logado');
         }
       } else {
@@ -42,7 +42,8 @@ const Demo = () => {
         }
       })
       .then(response => {
-        console.log(response.data);
+        localStorage.setItem('id', response.data.data.id);
+        localStorage.setItem('name', response.data.data.username);
         setUserInfo(response.data.data);
       })
       .catch(error => {
@@ -54,7 +55,7 @@ const Demo = () => {
   }, [token]);
 
   return (
-    <UserContext.Provider value={userInfo}>
+
       <div style={{ height: 380 }}>
         <form onSubmit={handleSubmit}>
           <div container>
@@ -82,7 +83,6 @@ const Demo = () => {
         {message && <p>{message}</p>}
         {userInfo && <p>Bem-vindo, {userInfo.username}!</p>}
       </div>
-    </UserContext.Provider>
   );
 };
 
