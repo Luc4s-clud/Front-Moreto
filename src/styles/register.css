@@ -55,12 +55,11 @@ p {
     margin: 10px 0;
 }
 
-.register-text {
+.login-text {
     margin-top: 200px;
     text-align: center;
-    
   }
 
-.register-text a {
+.login-text a {
     color: yellow;
 }
