@@ -104,8 +104,9 @@ const RaceClassSelection = ({ onSelectRace, onSelectClass, onComplete }) => {
           user_id: userId,
         });
 
-        console.log(response.data);
-        console.log(userId);
+        console.log(`esse aqui`, response.data.character.attribute_id);
+        // console.log(userId);
+        localStorage.setItem('attribute_id', response.data.character.attribute_id);
       } catch (error) {
         console.error('Erro ao criar personagem', error);
       }

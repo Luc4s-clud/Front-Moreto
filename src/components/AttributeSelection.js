@@ -4,6 +4,9 @@ import StatsDisplay from './StatsDisplay'; // Importa o novo componente
 import '../styles/StatsDisplay.css'; // Importa os estilos
 
 const AttributeSelection = ({ onComplete }) => {
+
+const attribute_id = localStorage.getItem('attribute_id')
+
   const initialAttributes = useMemo(() => ({
     força: 0,
     destreza: 0,
@@ -28,7 +31,7 @@ const AttributeSelection = ({ onComplete }) => {
     const fetchAttributes = async () => {
       try {
         console.log('Fetching attributes...');
-        const response = await axios.get('http://localhost:3333/attributes/1');
+        const response = await axios.get(`http://localhost:333/attributes/${attribute_id}`);
         console.log('Response data:', response.data);
 
         const mappedData = { ...initialAttributes };
@@ -63,7 +66,7 @@ const AttributeSelection = ({ onComplete }) => {
   const handleBlur = async (attr) => {
     console.log('Updating attribute:', attr, 'with value:', attributes[attr]);
     try {
-      await axios.put(`http://localhost:3333/attributes/1`, {
+      await axios.put(`http://localhost:3333/attributes/${attribute_id}`, {
         [reverseAttributeMapping[attr]]: attributes[attr]
       });
     } catch (error) {
