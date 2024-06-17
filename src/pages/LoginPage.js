@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from "../axiosConfig"
 import '../styles/login.css';
+import { useNavigate } from 'react-router-dom';
 
 
 const Demo = () => {
+  const navigate = useNavigate();
   const [login, setLogin] = useState({ username: '', password: '' });
   const [message, setMessage] = useState('');
   const [userInfo, setUserInfo] = useState({id: '', username: ''});
@@ -17,12 +19,14 @@ const Demo = () => {
     e.preventDefault();
     try {
       const response = await axios.post('/autenticacao/login', login);
-      console.log(response.data)
+
       if (response.data.type === 'success') {
         if (response.data && response.data.token) {
           localStorage.setItem('access_token', response.data.token);
           // console.log(localStorage.getItem('access_token'));
           setMessage('Você está logado');
+          navigate('/')
+
         }
       } else {
         setMessage(response.data.message);
