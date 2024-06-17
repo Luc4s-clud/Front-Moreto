@@ -36,7 +36,7 @@ const Demo = () => {
 
   useEffect(() => {
     if (token) {
-      axios.get('http://localhost:3333/autenticacao/user', {
+      axios.get('/autenticacao/user', {
         headers: {
           'Authorization': `${token}`
         }
@@ -56,10 +56,10 @@ const Demo = () => {
 
   return (
 
-      <div style={{ height: 380 }}>
+      <div style={{ height: 380, width: 300 }}>
         <form onSubmit={handleSubmit}>
           <div container>
-            <label>Usuário:</label>
+            <label>Usuário</label>
             <input
               type="text"
               name="username"
@@ -69,7 +69,7 @@ const Demo = () => {
             />
           </div>
           <div>
-            <label>Senha:</label>
+            <label>Senha</label>
             <input
               type="password"
               name="password"
@@ -80,8 +80,12 @@ const Demo = () => {
           </div>
           <button type="submit">Login</button>
         </form>
+
         {message && <p>{message}</p>}
-        {userInfo && <p>Bem-vindo, {userInfo.username}!</p>}
+
+        <div className="register-text">
+          <span>Não tem uma conta? <a href="/register">Registre-se</a></span>
+        </div>
       </div>
   );
 };

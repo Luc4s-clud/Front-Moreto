@@ -7,6 +7,7 @@ import SummaryPage from './pages/SummaryPage';
 import Demo from './pages/LoginPage';
 import MagicClickEffect from './components/MagicClickEffect'; // Importe o componente
 import './styles/MagicClickEffect.css'; // Importe o CSS
+import RegisterPage from './pages/RegisterPage';
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
           <Route path="/raceclass" element={<RaceClassPage />} />
           <Route path="/attributes" element={<AttributePage />} />
           <Route path="/summary" element={<SummaryPage />} />
+          <Route path="/register" element={<RegisterPage />} />
         </Routes>
       </Router>
     </CharacterProvider>
