@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import '../styles/MagicClickEffect.css'; // Ajuste o caminho conforme a estrutura de seu projeto
+import '../styles/MagicClickEffect.css'; 
 
 const MagicClickEffect = () => {
   useEffect(() => {

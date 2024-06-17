@@ -8,6 +8,7 @@ import Demo from './pages/LoginPage';
 import MagicClickEffect from './components/MagicClickEffect'; // Importe o componente
 import './styles/MagicClickEffect.css'; // Importe o CSS
 import RegisterPage from './pages/RegisterPage';
+import CharacterPage from './pages/CharacterPage.js'
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
           <Route path="/attributes" element={<AttributePage />} />
           <Route path="/summary" element={<SummaryPage />} />
           <Route path="/register" element={<RegisterPage />} />
+          <Route path="/" element={<CharacterPage />} />
         </Routes>
       </Router>
     </CharacterProvider>
