@@ -36,6 +36,7 @@ const CharactersPage = () => {
 
       if (response.status === 200) {
         setCharacters(response.data.characters);
+        console.log('characters:', response);
       } else {
         setMessage(response.data.error || 'Erro ao obter personagens');
       }
@@ -49,6 +50,14 @@ const CharactersPage = () => {
     navigate('/raceclass');
   };
 
+  const handleAttributeClick = (character) => {
+    navigate(`/attributes?attribute_id=${character.attribute_id}`);
+  };
+
+  const handleVisualizarClick = (character) => {
+    navigate(`/summary?character_id=${character.id}`);
+  };
+
   return (
     <div>
       <h1>Personagens</h1>
@@ -57,6 +66,8 @@ const CharactersPage = () => {
         {characters.map(character => (
           <li key={character.id}>
             {character.name} - {character.raca.nome} - {character.class.nome}
+            <button onClick={() => handleAttributeClick(character)}>Atributos</button>
+            <button onClick={() => handleVisualizarClick(character)}>Visualizar </button>
           </li>
         ))}
       </ul>

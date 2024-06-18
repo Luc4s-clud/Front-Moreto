@@ -3,9 +3,9 @@ import axios from 'axios';
 import StatsDisplay from './StatsDisplay'; // Importa o novo componente
 import '../styles/StatsDisplay.css'; // Importa os estilos
 
-const AttributeSelection = ({ onComplete }) => {
+const AttributeSelection = ({ onComplete, attribute_id }) => {
 
-const attribute_id = localStorage.getItem('attribute_id')
+
 
   const initialAttributes = useMemo(() => ({
     força: 0,
@@ -31,9 +31,9 @@ const attribute_id = localStorage.getItem('attribute_id')
     const fetchAttributes = async () => {
       try {
         console.log('Fetching attributes...');
-        const response = await axios.get(`http://localhost:333/attributes/${attribute_id}`);
+        const response = await axios.get(`http://localhost:3333/attributes/${attribute_id}`);
         console.log('Response data:', response.data);
-
+  
         const mappedData = { ...initialAttributes };
         for (const key in response.data[0]) {
           if (key in attributeMapping) {
@@ -41,15 +41,15 @@ const attribute_id = localStorage.getItem('attribute_id')
           }
         }
         console.log('Mapped data:', mappedData);
-
+  
         setAttributes(mappedData);
       } catch (error) {
         console.error('Error fetching attributes:', error);
       }
     };
-
+  
     fetchAttributes();
-  }, [attributeMapping, initialAttributes]);
+  }, [attributeMapping, initialAttributes, attribute_id]);
 
   const handleChange = (attr, value) => {
     setAttributes({ ...attributes, [attr]: value });

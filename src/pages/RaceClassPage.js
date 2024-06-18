@@ -39,8 +39,7 @@ const RaceClassPage = () => {
       return;
     }
 
-    // Se todas as condições forem satisfeitas, navegue para a próxima página
-    navigate('/attributes');
+    navigate('/');
   };
 
   return (
