@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from "../axiosConfig";
 import '../styles/charactersPage.css'
 import { useNavigate } from 'react-router-dom';
+import {FaRegEye, FaPlus} from 'react-icons/fa'
 
 const CharactersPage = () => {
   const navigate = useNavigate();
@@ -33,7 +34,6 @@ const CharactersPage = () => {
   const pegarCharacters = async (username) => {
     try {
       const response = await axios.post('/characters/user', { username });
-
       if (response.status === 200) {
         setCharacters(response.data.characters);
         console.log('characters:', response);
@@ -65,13 +65,13 @@ const CharactersPage = () => {
       <ul>
         {characters.map(character => (
           <li key={character.id}>
-            {character.name} - {character.raca.nome} - {character.class.nome}
-            <button onClick={() => handleAttributeClick(character)}>Atributos</button>
+            {character.name}
+            <button onClick={() => handleAttributeClick(character)}><FaRegEye /></button>
             <button onClick={() => handleVisualizarClick(character)}>Visualizar </button>
           </li>
         ))}
       </ul>
-      <button onClick={handleCreateCharacter}>Criar Novo Personagem</button>
+      <button onClick={handleCreateCharacter}><FaPlus />Criar Novo Personagem</button>
     </div>
   );
 };
