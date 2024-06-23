@@ -57,7 +57,8 @@ const CharactersPage = () => {
   const handleVisualizarClick = (character) => {
     navigate(`/summary?character_id=${character.id}`);
   };
-
+// console.log(`characters.raca`, characters.raca.name)
+// console.log(`characters`, characters)
   return (
     <div>
       <h1>Personagens</h1>
@@ -65,7 +66,7 @@ const CharactersPage = () => {
       <ul>
         {characters.map(character => (
           <li key={character.id}>
-            {character.name} - {character.raca.nome} - {character.class.nome}
+            {character.name} - {character.raca.name} - {character.class.name}
             <button onClick={() => handleAttributeClick(character)}>Atributos</button>
             <button onClick={() => handleVisualizarClick(character)}>Visualizar </button>
           </li>

@@ -15,7 +15,7 @@ const AttributePage = () => {
 
   const handleAttributesComplete = (attributes) => {
     setCharacter({ ...character, attributes });
-    navigate('/');
+    navigate('/character');
   };
 
   return (

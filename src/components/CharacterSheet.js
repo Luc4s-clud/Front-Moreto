@@ -45,10 +45,10 @@ const [character, setCharacter] = useState([]);
       </div>
     )) : null}
 </div>
-
+{/* 
       <div className="hp">
         <p><strong>Pontos de Vida Máximos:</strong> {10 + calculateModifier(character.character.raca.name)}</p>
-      </div>
+      </div> */}
 
       <div className="proficiencies">
         <p><strong>Bônus de Proficiência:</strong> +2</p>
