@@ -58,6 +58,7 @@ const CharactersPage = () => {
     navigate(`/summary?character_id=${character.id}`);
   };
 
+
 const handleDeleteClick = (characterId) => {
   confirmAlert({
     title: 'Excluir',
