@@ -14,20 +14,15 @@ const RaceClassPage = () => {
   };
 
   const handleRaceSelect = (selectedRace) => {
-    console.log(`Raça selecionada: ${selectedRace}`);
     setSelectedRace(selectedRace);
   };
 
   const handleClassSelect = (selectedClass) => {
-    console.log(`Classe selecionada: ${selectedClass}`);
     setSelectedClass(selectedClass);
   };
 
   const handleComplete = () => {
-    // if (characterName.trim() === '') {
-    //   alert('Por favor, insira um nome para o personagem.');
-    //   return;
-    // }
+
 
     if (!selectedRace) {
       alert('Por favor, selecione uma raça.');

@@ -16,12 +16,13 @@ const App = () => {
       <Router>
         <MagicClickEffect /> 
         <Routes>
-          <Route path="/" element={<Demo />} />
+          <Route path="/" element={<CharacterPage />} />
+          <Route path="/character" element={<CharacterPage />} />
           <Route path="/raceclass" element={<RaceClassPage />} />
           <Route path="/attributes" element={<AttributePage />} />
           <Route path="/summary" element={<SummaryPage />} />
           <Route path="/register" element={<RegisterPage />} />
-          <Route path="/character" element={<CharacterPage />} />
+          <Route path="/login" element={<Demo />} />
         </Routes>
       </Router>
     </CharacterProvider>

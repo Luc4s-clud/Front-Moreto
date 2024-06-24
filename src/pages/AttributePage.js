@@ -11,7 +11,6 @@ const AttributePage = () => {
   const params = new URLSearchParams(location.search);
   const attribute_id = params.get('attribute_id');
 
-  console.log('attribute_id:', attribute_id);
 
   const handleAttributesComplete = (attributes) => {
     setCharacter({ ...character, attributes });

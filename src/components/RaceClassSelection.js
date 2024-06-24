@@ -4,7 +4,6 @@ import humanImage from '../assets/human.png';
 import elfImage from '../assets/elf.png';
 import dwarfImage from '../assets/dwarf.png';
 import halfOrcImage from '../assets/half-orc.png';
-// import gnomeImage from '../assets/gnome.png';
 import warriorImage from '../assets/warrior.png';
 import wizardImage from '../assets/wizard.png';
 import rogueImage from '../assets/rogue.png';
@@ -17,13 +16,12 @@ import paladinImage from '../assets/paladin.png';
 import rangerImage from '../assets/ranger.png';
 import sorcererImage from '../assets/sorcerer.png';
 import warlockImage from '../assets/warlock.png';
-import '../styles/Button.css'; // Adicione este arquivo para estilização
-
+import '../styles/Button.css'; 
 
 
 const RaceClassSelection = ({ onSelectRace, onSelectClass, onComplete }) => {
   const [selectedRace, setSelectedRace] = useState(null);
-  const [selectedRaceId, setSelectedRaceId] = useState(null); // Adicione esta linha
+  const [selectedRaceId, setSelectedRaceId] = useState(null); 
   const [selectedClass, setSelectedClass] = useState(null);
   const [selectedClassId, setSelectedClassId] = useState(null);
   const [characterName, setCharacterName] = useState('');
@@ -62,7 +60,6 @@ const RaceClassSelection = ({ onSelectRace, onSelectClass, onComplete }) => {
     const fetchRaces = async () => {
       try {
         const response = await axios.get('http://localhost:3333/races');
-        console.log(response.data);
         const racesWithImages = response.data.data.map(race => ({
           ...race,
           image: raceImages[race.name]
@@ -95,7 +92,7 @@ const RaceClassSelection = ({ onSelectRace, onSelectClass, onComplete }) => {
 
 
   const createCharacter = async () => {
-    if (characterName && selectedRaceId && selectedClassId) { // Adicione esta condição
+    if (characterName && selectedRaceId && selectedClassId) {
       try {
         const response = await axios.post('http://localhost:3333/character', {
           name: characterName,
@@ -103,9 +100,6 @@ const RaceClassSelection = ({ onSelectRace, onSelectClass, onComplete }) => {
           class_id: selectedClassId,
           user_id: userId,
         });
-
-        console.log(`esse aqui`, response.data.character.attribute_id);
-        // console.log(userId);
         localStorage.setItem('attribute_id', response.data.character.attribute_id);
       } catch (error) {
         console.error('Erro ao criar personagem', error);
@@ -115,13 +109,13 @@ const RaceClassSelection = ({ onSelectRace, onSelectClass, onComplete }) => {
 
   const handleRaceClick = (raceName, raceId) => {
     setSelectedRace(raceName);
-    setSelectedRaceId(raceId); // Adicione esta linha
+    setSelectedRaceId(raceId);
     onSelectRace(raceName);
   };
 
   const handleClassClick = (className, classId) => {
     setSelectedClass(className);
-    setSelectedClassId(classId); // Adicione esta linha
+    setSelectedClassId(classId);
     onSelectClass(className);
   };
 
@@ -158,11 +152,11 @@ const RaceClassSelection = ({ onSelectRace, onSelectClass, onComplete }) => {
       </div>
       <h2>Escolha a Classe</h2>
       <div className="selection-container">
-        {classes.map((classe, index) => ( // include index parameter
+        {classes.map((classe, index) => ( 
           <div
             key={classe.name}
             className={`race-class-option ${selectedClass === classe.name ? 'pressed' : ''}`}
-            onClick={() => handleClassClick(classe.name, classe.id)} // pass index + 1 as classId
+            onClick={() => handleClassClick(classe.name, classe.id)} 
           >
             <img src={classe.image} alt={classe.name} className="race-class-image" />
             <div>

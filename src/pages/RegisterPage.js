@@ -25,7 +25,6 @@ const RegisterPage = () => {
         username: register.username,
         password: register.password
       });
-      console.log(response.data);
       if (response.data.type === 'success') {
         setMessage('Registro realizado com sucesso! Realize o login.');
         navigate('/login');

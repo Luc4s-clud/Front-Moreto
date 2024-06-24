@@ -30,17 +30,13 @@ const AttributeSelection = ({ onComplete, attribute_id }) => {
   useEffect(() => {
     const fetchAttributes = async () => {
       try {
-        console.log('Fetching attributes...');
-        const response = await axios.get(`http://localhost:3333/attributes/${attribute_id}`);
-        console.log('Response data:', response.data);
-  
+        const response = await axios.get(`http://localhost:3333/attributes/${attribute_id}`);  
         const mappedData = { ...initialAttributes };
         for (const key in response.data[0]) {
           if (key in attributeMapping) {
             mappedData[attributeMapping[key]] = response.data[0][key] || 0;
           }
         }
-        console.log('Mapped data:', mappedData);
   
         setAttributes(mappedData);
       } catch (error) {
@@ -64,7 +60,6 @@ const AttributeSelection = ({ onComplete, attribute_id }) => {
   }, [attributeMapping]);
 
   const handleBlur = async (attr) => {
-    console.log('Updating attribute:', attr, 'with value:', attributes[attr]);
     try {
       await axios.put(`http://localhost:3333/attributes/${attribute_id}`, {
         [reverseAttributeMapping[attr]]: attributes[attr]
@@ -76,8 +71,8 @@ const AttributeSelection = ({ onComplete, attribute_id }) => {
 
   return (
     <div className="attribute-selection">
-      <h2>Criação de Personagem - Atributos</h2>
-      <StatsDisplay armorClass={19} initiative={''} speed={'7,5'} /> {/* Adiciona o componente StatsDisplay abaixo do título */}
+      <h2> Atributos</h2>
+      <StatsDisplay armorClass={19} initiative={''} speed={'7,5'} /> {}
       <div>
         <h3>Atributos</h3>
         <div className="attributes-container">
