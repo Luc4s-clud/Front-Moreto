@@ -76,7 +76,7 @@ const AttributeSelection = ({ onComplete, attribute_id }) => {
 
   return (
     <div className="attribute-selection">
-      <h2>Criação de Personagem - Atributos</h2>
+      <h2> Atributos</h2>
       <StatsDisplay armorClass={19} initiative={''} speed={'7,5'} /> {}
       <div>
         <h3>Atributos</h3>

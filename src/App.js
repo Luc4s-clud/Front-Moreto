@@ -17,6 +17,7 @@ const App = () => {
         <MagicClickEffect /> 
         <Routes>
           <Route path="/" element={<CharacterPage />} />
+          <Route path="/character" element={<CharacterPage />} />
           <Route path="/raceclass" element={<RaceClassPage />} />
           <Route path="/attributes" element={<AttributePage />} />
           <Route path="/summary" element={<SummaryPage />} />

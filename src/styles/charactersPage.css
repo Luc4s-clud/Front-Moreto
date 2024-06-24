@@ -64,3 +64,83 @@ p {
 .register-text a {
     color: yellow;
 }
+
+
+.characters-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.character-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.character-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 98%;
+}
+
+.character-name {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 200px; /* Set a fixed width for the text */
+}
+
+.character-icons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.icon {
+  margin: 5px 0; /* Space between icons */
+}
+
+
+
+.register-text {
+  margin-top: 200px;
+  text-align: center;
+}
+
+.register-text a {
+  color: yellow;
+}
+
+.character-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  height: 80px;
+  padding: 10px;
+  width: 90%; 
+  background-color:#34495e; 
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.character-image {
+  margin-top: 10px;
+  width: 80px;  
+  height: 80px; 
+  margin-left: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.character-sheet {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}

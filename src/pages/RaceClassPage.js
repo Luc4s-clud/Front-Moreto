@@ -24,10 +24,7 @@ const RaceClassPage = () => {
   };
 
   const handleComplete = () => {
-    // if (characterName.trim() === '') {
-    //   alert('Por favor, insira um nome para o personagem.');
-    //   return;
-    // }
+
 
     if (!selectedRace) {
       alert('Por favor, selecione uma raça.');
