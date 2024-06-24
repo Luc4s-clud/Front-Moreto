@@ -4,7 +4,6 @@ import humanImage from '../assets/human.png';
 import elfImage from '../assets/elf.png';
 import dwarfImage from '../assets/dwarf.png';
 import halfOrcImage from '../assets/half-orc.png';
-// import gnomeImage from '../assets/gnome.png';
 import warriorImage from '../assets/warrior.png';
 import wizardImage from '../assets/wizard.png';
 import rogueImage from '../assets/rogue.png';
@@ -17,13 +16,12 @@ import paladinImage from '../assets/paladin.png';
 import rangerImage from '../assets/ranger.png';
 import sorcererImage from '../assets/sorcerer.png';
 import warlockImage from '../assets/warlock.png';
-import '../styles/Button.css'; // Adicione este arquivo para estilização
-
+import '../styles/Button.css'; 
 
 
 const RaceClassSelection = ({ onSelectRace, onSelectClass, onComplete }) => {
   const [selectedRace, setSelectedRace] = useState(null);
-  const [selectedRaceId, setSelectedRaceId] = useState(null); // Adicione esta linha
+  const [selectedRaceId, setSelectedRaceId] = useState(null); 
   const [selectedClass, setSelectedClass] = useState(null);
   const [selectedClassId, setSelectedClassId] = useState(null);
   const [characterName, setCharacterName] = useState('');
@@ -95,7 +93,7 @@ const RaceClassSelection = ({ onSelectRace, onSelectClass, onComplete }) => {
 
 
   const createCharacter = async () => {
-    if (characterName && selectedRaceId && selectedClassId) { // Adicione esta condição
+    if (characterName && selectedRaceId && selectedClassId) {
       try {
         const response = await axios.post('http://localhost:3333/character', {
           name: characterName,
@@ -103,8 +101,6 @@ const RaceClassSelection = ({ onSelectRace, onSelectClass, onComplete }) => {
           class_id: selectedClassId,
           user_id: userId,
         });
-
-        console.log(`esse aqui`, response.data.character.attribute_id);
         // console.log(userId);
         localStorage.setItem('attribute_id', response.data.character.attribute_id);
       } catch (error) {
@@ -115,13 +111,13 @@ const RaceClassSelection = ({ onSelectRace, onSelectClass, onComplete }) => {
 
   const handleRaceClick = (raceName, raceId) => {
     setSelectedRace(raceName);
-    setSelectedRaceId(raceId); // Adicione esta linha
+    setSelectedRaceId(raceId);
     onSelectRace(raceName);
   };
 
   const handleClassClick = (className, classId) => {
     setSelectedClass(className);
-    setSelectedClassId(classId); // Adicione esta linha
+    setSelectedClassId(classId);
     onSelectClass(className);
   };
 

@@ -71,7 +71,7 @@ const CharactersPage = () => {
           </li>
         ))}
       </ul>
-      <button onClick={handleCreateCharacter}><FaPlus />Criar Novo Personagem</button>
+      <button onClick={handleCreateCharacter}><FaPlus /> Novo Personagem</button>
     </div>
   );
 };
