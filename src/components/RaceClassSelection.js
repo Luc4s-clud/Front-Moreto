@@ -60,7 +60,6 @@ const RaceClassSelection = ({ onSelectRace, onSelectClass, onComplete }) => {
     const fetchRaces = async () => {
       try {
         const response = await axios.get('http://localhost:3333/races');
-        console.log(response.data);
         const racesWithImages = response.data.data.map(race => ({
           ...race,
           image: raceImages[race.name]
@@ -101,7 +100,6 @@ const RaceClassSelection = ({ onSelectRace, onSelectClass, onComplete }) => {
           class_id: selectedClassId,
           user_id: userId,
         });
-        // console.log(userId);
         localStorage.setItem('attribute_id', response.data.character.attribute_id);
       } catch (error) {
         console.error('Erro ao criar personagem', error);
@@ -154,11 +152,11 @@ const RaceClassSelection = ({ onSelectRace, onSelectClass, onComplete }) => {
       </div>
       <h2>Escolha a Classe</h2>
       <div className="selection-container">
-        {classes.map((classe, index) => ( // include index parameter
+        {classes.map((classe, index) => ( 
           <div
             key={classe.name}
             className={`race-class-option ${selectedClass === classe.name ? 'pressed' : ''}`}
-            onClick={() => handleClassClick(classe.name, classe.id)} // pass index + 1 as classId
+            onClick={() => handleClassClick(classe.name, classe.id)} 
           >
             <img src={classe.image} alt={classe.name} className="race-class-image" />
             <div>

@@ -30,17 +30,13 @@ const AttributeSelection = ({ onComplete, attribute_id }) => {
   useEffect(() => {
     const fetchAttributes = async () => {
       try {
-        console.log('Fetching attributes...');
-        const response = await axios.get(`http://localhost:3333/attributes/${attribute_id}`);
-        console.log('Response data:', response.data);
-  
+        const response = await axios.get(`http://localhost:3333/attributes/${attribute_id}`);  
         const mappedData = { ...initialAttributes };
         for (const key in response.data[0]) {
           if (key in attributeMapping) {
             mappedData[attributeMapping[key]] = response.data[0][key] || 0;
           }
         }
-        console.log('Mapped data:', mappedData);
   
         setAttributes(mappedData);
       } catch (error) {
@@ -64,7 +60,6 @@ const AttributeSelection = ({ onComplete, attribute_id }) => {
   }, [attributeMapping]);
 
   const handleBlur = async (attr) => {
-    console.log('Updating attribute:', attr, 'with value:', attributes[attr]);
     try {
       await axios.put(`http://localhost:3333/attributes/${attribute_id}`, {
         [reverseAttributeMapping[attr]]: attributes[attr]

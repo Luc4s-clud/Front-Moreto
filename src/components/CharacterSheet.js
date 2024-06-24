@@ -26,9 +26,7 @@ const [character, setCharacter] = useState([]);
   useEffect(() => {
     const fetchAttributes = async () => {
       try {
-        console.log('Fetching attributes...');
         const response = await axios.get(`http://localhost:3333/characters/${character_id}`);
-        console.log('Response data:', response.data);
         setCharacter(response.data);
       } catch (error) {
         console.error('Error fetching attributes:', error);

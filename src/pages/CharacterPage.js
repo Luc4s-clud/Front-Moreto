@@ -21,7 +21,6 @@ const CharactersPage = () => {
       })
       .then(response => {
         const username = response.data.data.username;
-        console.log("username:", username)
         pegarCharacters(username);
       })
       .catch(error => {
@@ -38,7 +37,6 @@ const CharactersPage = () => {
       const response = await axios.post('/characters/user', { username });
       if (response.status === 200) {
         setCharacters(response.data.characters);
-        console.log('characters:', response);
       } else {
         setMessage(response.data.error || 'Erro ao obter personagens');
       }
@@ -61,7 +59,6 @@ const CharactersPage = () => {
   };
 
 const handleDeleteClick = (characterId) => {
-  alert(characterId)
   confirmAlert({
     title: 'Excluir',
     message: 'Você tem certeza que deseja deletar este personagem?',
@@ -110,12 +107,13 @@ return (
             <div className="character-icons">
               <FaRegEdit className="icon" onClick={() => handleAttributeClick(character)} />
               <FaRegEye className="icon" onClick={() => handleVisualizarClick(character)} />
-              <FaTrash className="icon" onClick={() => handleDeleteClick(character.id)} />
+              <FaTrash className="icon" onClick={() => handleDeleteClick(character)} />
             </div>
           </div>
         </li>
       ))}
     </ul>
+    
     <button onClick={handleCreateCharacter}><FaPlus /> Novo Personagem</button>
   </div>
 );

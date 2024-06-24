@@ -14,12 +14,10 @@ const RaceClassPage = () => {
   };
 
   const handleRaceSelect = (selectedRace) => {
-    console.log(`Raça selecionada: ${selectedRace}`);
     setSelectedRace(selectedRace);
   };
 
   const handleClassSelect = (selectedClass) => {
-    console.log(`Classe selecionada: ${selectedClass}`);
     setSelectedClass(selectedClass);
   };
 

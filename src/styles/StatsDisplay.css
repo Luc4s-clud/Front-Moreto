@@ -4,13 +4,13 @@
   margin: 20px 0px;
   top: 0;
   width: 100%;
-  background-color: #34495e; /* Fundo claro para destacar os números */
+  background-color: #34495e; 
   padding: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra para destacar */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
 }
 
 .stat-item {
-  border: 2px solid #000; /* Bordas pretas para maior contraste */
+  border: 2px solid #000; 
   border-radius: 10px;
   padding: 10px;
   width: 100px;

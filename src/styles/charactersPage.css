@@ -89,7 +89,8 @@ p {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  width: 200px; /* Set a fixed width for the text */
+  width: 200px; 
+
 }
 
 .character-icons {
@@ -99,7 +100,7 @@ p {
 }
 
 .icon {
-  margin: 5px 0; /* Space between icons */
+  margin: 5px 0; 
 }
 
 

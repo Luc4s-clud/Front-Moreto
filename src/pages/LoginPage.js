@@ -23,7 +23,6 @@ const Demo = () => {
       if (response.data.type === 'success') {
         if (response.data && response.data.token) {
           localStorage.setItem('access_token', response.data.token);
-          // console.log(localStorage.getItem('access_token'));
           setMessage('Você está logado');
           navigate('/character')
 
